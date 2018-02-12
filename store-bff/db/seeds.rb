@@ -1,3 +1,4 @@
+require 'securerandom'
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -10,4 +11,5 @@ book_store = Seller.create(name: 'A Book Store')
 
 _book = Product.create(name: 'A simple book', price: 1500, image_url: 'http://imagerepo.com/book.jpg', seller: book_store)
 
+_mariana = User.create(name: 'Mariana', uid: SecureRandom.uuid)
 
