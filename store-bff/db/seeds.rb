@@ -23,5 +23,7 @@ sara = User.create(name: 'Sara', uid: SecureRandom.uuid)
 _saras_cart = Cart.create(user: sara, products: [book_c, book_a, game_c, lamp_c])
 
 hugo = User.create(name: 'Hugo', uid: SecureRandom.uuid)
-_hugos_cart = Cart.create(user: hugo, products: [book_b, game_b, lamp_b])
+hugos_cart = Cart.create(user: hugo, products: [book_b, game_b, lamp_b])
+
+_hugos_checkout = Checkout.create(cart: hugos_cart)
 
