@@ -5,12 +5,10 @@ Types::CheckoutType = GraphQL::ObjectType.define do
   field :total_price do
     type types.Int
     resolve -> (checkout, args, _ctx) do
-      checkout.products.inject(0) do |total, product|
-        total += product.price
-      end
+      checkout.cart.total_price
     end
   end
 
-  field :products, Types::ProductType
+  field :products, types[Types::ProductType]
   field :user, Types::UserType
 end
