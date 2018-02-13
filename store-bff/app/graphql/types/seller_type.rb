@@ -3,4 +3,5 @@ Types::SellerType = GraphQL::ObjectType.define do
   description 'A seller who sells products'
 
   field :name, !types.String
+  field :products, types[Types::ProductType]
 end
