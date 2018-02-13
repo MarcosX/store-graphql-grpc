@@ -2,6 +2,7 @@ Types::CartType = GraphQL::ObjectType.define do
   name 'Cart'
   description 'A cart with products for a user'
 
+  field :id, types.Int
   field :products, types[Types::ProductType]
   field :user, Types::UserType
   field :total_price do

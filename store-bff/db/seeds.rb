@@ -17,13 +17,16 @@ lamp_b = Product.create(name: 'A blue lamp', price: 1500, image_url: 'http://ima
 lamp_c = Product.create(name: 'A green lamp', price: 1000, image_url: 'http://imagerepo.com/lamp_c.jpg', seller: home_store)
 
 mariana = User.create(name: 'Mariana', uid: SecureRandom.uuid)
-_marianas_cart = Cart.create(user: mariana, products: [book_a, book_b, game_a, lamp_a])
+marianas_cart = Cart.create(user: mariana, products: [book_a, book_b, game_a, lamp_a])
+mariana.update_attribute(:cart_id, marianas_cart.id)
 
 sara = User.create(name: 'Sara', uid: SecureRandom.uuid)
-_saras_cart = Cart.create(user: sara, products: [book_c, book_a, game_c, lamp_c])
+saras_cart = Cart.create(user: sara, products: [book_c, book_a, game_c, lamp_c])
+sara.update_attribute(:cart_id, saras_cart.id)
 
 hugo = User.create(name: 'Hugo', uid: SecureRandom.uuid)
 hugos_cart = Cart.create(user: hugo, products: [book_b, game_b, lamp_b])
+hugo.update_attribute(:cart_id, hugos_cart.id)
 
 _hugos_checkout = Checkout.create(cart: hugos_cart)
 

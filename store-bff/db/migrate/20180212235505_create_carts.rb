@@ -5,5 +5,7 @@ class CreateCarts < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
+
+    add_reference :users, :cart, index: true
   end
 end

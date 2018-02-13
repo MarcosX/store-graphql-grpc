@@ -56,6 +56,8 @@ ActiveRecord::Schema.define(version: 20180213170107) do
     t.string "uid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "cart_id"
+    t.index ["cart_id"], name: "index_users_on_cart_id"
   end
 
 end

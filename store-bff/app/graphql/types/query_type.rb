@@ -24,7 +24,7 @@ Types::QueryType = GraphQL::ObjectType.define do
     description 'A cart checkout'
     argument :cart_id, !types.Int
     resolve -> (root, args, ctx) do
-      Cart.find(args[:cart_id])
+      Cart.find(args[:cart_id]).checkout
     end
   end
 end
