@@ -1,8 +1,11 @@
 # Setup
 
+Install ruby and rails, then run
+
 ```
-bundle exec rails db:create db:migrate db:seed
-bundle exec rails server
+bundle # install all gems
+bundle exec rails db:create db:migrate db:seed # setup the SQLite database
+bundle exec rails server # start the server
 ```
 
 # Accessing with httpie
