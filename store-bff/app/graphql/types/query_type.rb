@@ -18,4 +18,13 @@ Types::QueryType = GraphQL::ObjectType.define do
       Product.where('lower(name) like ?', "%#{args[:name]}%")
     end
   end
+
+  field :checkout do
+    type Types::CheckoutType
+    description 'A cart checkout'
+    argument :cart_id, !types.Int
+    resolve -> (root, args, ctx) do
+      Cart.find(args[:cart_id])
+    end
+  end
 end
