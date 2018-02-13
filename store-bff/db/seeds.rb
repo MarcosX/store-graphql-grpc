@@ -9,7 +9,8 @@ require 'securerandom'
 
 book_store = Seller.create(name: 'A Book Store')
 
-_book = Product.create(name: 'A simple book', price: 1500, image_url: 'http://imagerepo.com/book.jpg', seller: book_store)
+book = Product.create(name: 'A simple book', price: 1500, image_url: 'http://imagerepo.com/book.jpg', seller: book_store)
 
-_mariana = User.create(name: 'Mariana', uid: SecureRandom.uuid)
+mariana = User.create(name: 'Mariana', uid: SecureRandom.uuid)
+_marianas_cart = Cart.create(user: mariana, products: [book])
 
