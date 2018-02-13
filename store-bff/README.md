@@ -1,24 +1,99 @@
-# README
+# Setup
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+```
+bundle exec rails db:create db:migrate db:seed
+bundle exec rails server
+```
 
-Things you may want to cover:
+# Accessing with httpie
 
-* Ruby version
+Install [httpie](https://httpie.org) and run the following:
 
-* System dependencies
+`http -v POST localhost:3000/graphql query="query { products(name: \"book\") { name, price} } "`
 
-* Configuration
+# Accessing with GraphiQL App
 
-* Database creation
+Point [GraphiQL App](https://github.com/skevy/graphiql-app) to `http://localhots:3000/graphql`.
 
-* Database initialization
+# Sample queries:
 
-* How to run the test suite
+```
+mutation AddProductToCart {
+  add_to_cart(product_id: 1, user_id: 1) {
+    user {
+      name
+      cart {
+        total_price
+      }
+    }
+    products {
+      id
+    }
+  }
+}
 
-* Services (job queues, cache servers, search engines, etc.)
+mutation DoCheckout {
+  do_checkout(user_id: 1) {
+    id
+    cart {
+      id
+      user {
+        name
+      }
+      products {
+        id
+      }
+    }
+  }
+}
 
-* Deployment instructions
+query GetCheckout {
+  checkout(cart_id: 1) {
+    id
+    cart {
+      products {
+        name
+        price
+      }
+      user {
+        name
+        cart {
+          total_price
+        }
+      }
+    }
+  }
+}
 
-* ...
+query GetProducts {
+  products(name: "good") {
+    name
+    price
+    id
+    seller {
+      name
+      products {
+        name
+        id
+      }
+    }
+  }
+}
+
+query GetUser {
+  user(name: "Mariana") {
+    id
+    name
+    cart {
+      id
+      products {
+        name
+        price
+        seller {
+          name
+        }
+      }
+    }
+  }
+}
+```
