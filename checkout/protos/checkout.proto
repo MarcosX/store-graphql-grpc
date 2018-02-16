@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package store;
+
+service Checkout {
+  rpc process_payment (CheckoutRequest) returns (CheckoutResponse) {}
+}
+
+message CheckoutRequest {
+  repeated int32 product_id = 1;
+  int32 user_uid = 2;
+  int32 cart_total = 3;
+}
+
+enum CheckoutStatus {
+  SUCCESSFUL = 0;
+  DECLINED_BY_BANK = 1;
+  DECLINED_BY_SECUTIRY = 2;
+}
+
+message CheckoutResponse {
+  int32 cart_total = 1;
+  int32 discount_total = 2;
+  int32 paid_amount = 3;
+  CheckoutStatus status = 4; 
+}
+
