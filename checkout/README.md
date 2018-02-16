@@ -13,7 +13,8 @@ prints the response.
 
 # Compiling .proto
 
-To generate ruby code from proto files run:
+To generate ruby code from proto files run
+[namely/protoc-all](https://github.com/namely/docker-protoc) docker image:
 
 ```
 docker run -v `pwd`:/defs namely/protoc-all -f protos/checkout.proto -l ruby -o lib
